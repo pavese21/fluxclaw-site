@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxclaw - Digital Products for Independent Artists</title>
+    <meta name="description" content="Battle-tested systems for indie artists. From 845th Entertainment.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --border: #262626;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --success: #22c55e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Nav */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 32px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+        }
+        
+        /* Products */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+        
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.2s;
+        }
+        
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .product-card p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .price .old {
+            font-size: 18px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .feature h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .feature p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Token Section */
+        .token-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+            border-radius: 24px;
+            margin: 40px 0;
+        }
+        
+        .token-section h2 {
+            text-align: center;
+        }
+        
+        .token-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .token-benefit {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .token-benefit h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .stats {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">FLUXCLAW</div>
+            <div class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#token">$FLUX</a>
+                <a href="https://twitter.com/fluxclaw" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge">From 845th Entertainment</span>
+            <h1>Systems That Actually<br>Get You Heard</h1>
+            <p>Battle-tested digital products for independent artists. Stop guessing. Start growing.</p>
+            <div class="cta-group">
+                <a href="#products" class="btn btn-primary">Browse Products →</a>
+                <a href="#token" class="btn btn-secondary">About $FLUX</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">845th</div>
+                    <div class="stat-label">Entertainment Backed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Checklist Items</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Video Walkthroughs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <p class="section-title">Products</p>
+            <h2>Built From Real Releases</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>🎵 Artist Release Checklist</h3>
+                    <p>The complete 8-week release system. 100+ checkboxes covering everything from final mix to post-release momentum. Includes Notion template + video walkthroughs.</p>
+                    <div class="product-meta">
+                        <span class="price">$37 <span class="old">$67</span></span>
+                        <a href="YOUR_GUMROAD_LINK" class="btn btn-primary">Get It</a>
+                    </div>
+                </div>
+                
+                <div class="product-card" style="opacity: 0.6;">
+                    <h3>📅 Content Calendar System</h3>
+                    <p>30-day content engine for musicians. Templates, hooks, scheduling — everything you need to stay consistent without burnout.</p>
+                    <div class="product-meta">
+                        <span class="price">Coming Soon</span>
+                    </div>
+                </div>
+                
+                <div class="product-card" style="opacity: 0.6;">
+                    <h3>🎛️ Studio Booking System</h3>
+                    <p>Run your studio like a business. Booking management, client intake, session tracking — all in Notion.</p>
+                    <div class="product-meta">
+                        <span class="price">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="token" class="token-section">
+        <div class="container">
+            <p class="section-title">$FLUX Token</p>
+            <h2>Hold $FLUX. Unlock More.</h2>
+            
+            <div class="token-benefits">
+                <div class="token-benefit">
+                    <h4>🔓 Product Discounts</h4>
+                    <p>$FLUX holders get 20-50% off all Fluxclaw products. The more you hold, the bigger the discount.</p>
+                </div>
+                <div class="token-benefit">
+                    <h4>🎁 Exclusive Drops</h4>
+                    <p>Token-gated products and templates only available to holders. First access to everything we build.</p>
+                </div>
+                <div class="token-benefit">
+                    <h4>📈 Revenue Share</h4>
+                    <p>A portion of product revenue flows back to token holders. Your support = your profit.</p>
+                </div>
+                <div class="token-benefit">
+                    <h4>🗳️ Governance</h4>
+                    <p>Vote on what we build next. Shape the product roadmap. Your voice matters.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="https://app.doppler.lol/tokens/base/0x24B33622eEc3DbE04Dd32D9E162e096e042eCBa3" class="btn btn-primary">Buy $FLUX on Base →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <h4>Battle-Tested</h4>
+                    <p>Every product comes from real releases at 845th Entertainment. Not theory — practice.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎥</div>
+                    <h4>Video Walkthroughs</h4>
+                    <p>Don't just read — watch. Every product includes step-by-step video guides.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h4>Lifetime Updates</h4>
+                    <p>Buy once, own forever. Get every update and improvement for free.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h4>Community Support</h4>
+                    <p>Join the Fluxclaw community. Get help, share wins, connect with other artists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Fluxclaw | <a href="https://845th.com">845th Entertainment</a></p>
+            <p style="margin-top: 8px;">Built with 🔥 for independent artists</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
