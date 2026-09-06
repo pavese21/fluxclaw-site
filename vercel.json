@@ -2,9 +2,13 @@
   "version": 2,
   "name": "fluxclaw",
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "terms.html", "use": "@vercel/static" },
+    { "src": "privacy.html", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "^/terms\\.html$", "dest": "/terms.html" },
+    { "src": "^/privacy\\.html$", "dest": "/privacy.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
